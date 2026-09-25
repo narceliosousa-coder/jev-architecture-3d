@@ -437,6 +437,17 @@
       else if (!anim) flyTo(cam, 1000);
     });
   });
+  function setMore(btn, open) {
+    var box = btn.nextElementSibling; if (!box) return;
+    box.hidden = !open; btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.textContent = open ? 'Saber menos ▴' : 'Saber mais ▾';
+  }
+  document.querySelectorAll('.more-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () { setMore(btn, btn.getAttribute('aria-expanded') !== 'true'); });
+  });
+  var allOpen = document.getElementById('more-all-open'), allClose = document.getElementById('more-all-close');
+  if (allOpen) allOpen.addEventListener('click', function () { document.querySelectorAll('.more-btn').forEach(function (b) { setMore(b, true); }); });
+  if (allClose) allClose.addEventListener('click', function () { document.querySelectorAll('.more-btn').forEach(function (b) { setMore(b, false); }); });
   document.querySelectorAll('.lg[data-g]').forEach(function (el) {
     el.addEventListener('click', function () {
       var g = el.getAttribute('data-g'), list = byGroup[g] || [];

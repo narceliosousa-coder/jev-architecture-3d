@@ -7,6 +7,9 @@ import re
 import sys
 import numpy as np
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from saber_mais import MORE   # textos 'Saber mais' (um por card)
+
 # ---------- paleta (mesma familia do PDF) ----------
 INK = "#1c2230"
 MUTED = "#5b6472"
@@ -1115,11 +1118,16 @@ for st in stages:
     panel.append(f'<h3>{st}</h3>')
     for c in [c for c in components if c["stage"] == st]:
         f_ = f'<div class="f">{c["formula"]}</div>' if c.get("formula") else ""
+        m_ = MORE.get(c["id"])
+        more_ = (f'<button class="more-btn" aria-expanded="false">Saber mais ▾</button><div class="more" hidden>{m_}</div>' if m_ else "")
         panel.append(
             f'<div class="item" id="card-{c["id"]}" data-cam=\'{json.dumps(c["cam"])}\' data-exp="{1 if c.get("exp") else 0}">'
             f'<div class="t">{c["title"]}</div><div class="d">{c["desc"]}</div>{f_}'
-            f'<button class="focus">Focar na cena →</button></div>')
+            f'<div class="btns"><button class="focus">Focar na cena →</button>{more_}</div></div>')
 panel_html = "\n".join(panel)
+_faltam = [c["id"] for c in components if c["id"] not in MORE]
+if _faltam:
+    print("AVISO: cards sem Saber mais:", _faltam)
 views_html = "".join(f'<button class="viewbtn" data-view=\'{json.dumps(v)}\'>{n}</button>' for n, v in views)
 views_html += '<button class="do-expand accent">🔍 Expandir Bloco 1</button><button class="do-collapse">⤡ Recolher</button>'
 legend_html = "".join(f'<div class="lg" data-g="{g}" title="clique para ocultar/mostrar"><span class="sw" style="background:{c}"></span>{g}</div>' for g, c in GROUPS)

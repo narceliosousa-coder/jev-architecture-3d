@@ -8,12 +8,13 @@ Choice / Score / Noul, calibração RLCD e o pipeline autorregressivo que o mode
 - Passe o mouse nas peças para ler o que fazem; clique para abrir o card no guia de estudo.
 - Passe o mouse no **Bloco 1** e clique em "Expandir": o bloco sobe, se abre e vira as matrizes reais
   de um bloco Transformer (X, LayerNorm, W_Q/W_K/W_V, Q/K/V, scores, softmax, A·V, concat, W_O, residual, FFN SwiGLU),
-  todas calculadas em numpy, com um card explicativo por matriz.
+  todas calculadas em numpy, com um card explicativo por matriz. Cada card do guia tem um "Saber mais" com explicação por analogia.
 
 ## Arquivos
 
 - `index.html` — página autocontida (funciona offline).
 - `src/jev_scene.py` — gerador: descreve a cena e escreve o HTML (`python src/jev_scene.py index.html`; requer `numpy`).
+- `src/saber_mais.py` — textos "Saber mais" do guia de estudo (um por card, explicação por analogia).
 - `src/viewer.js` — visualizador Three.js (render, hover, câmeras, animação de expansão).
 - `src/page_template.html` — layout da página. `src/lib/` — three.js r128 + OrbitControls (embutidos).
 

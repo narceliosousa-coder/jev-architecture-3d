@@ -40,6 +40,16 @@
   .item .f { margin-top:6px; padding:6px 8px; background:#f4f6f9; border-left:3px solid var(--navy); font-family:"Cambria Math",Cambria,Georgia,serif; font-size:12.5px; color:var(--navy); line-height:1.5; }
   .item button { margin-top:6px; font-size:11px; border:1px solid var(--line); background:#f4f6f9; color:var(--navy); border-radius:4px; padding:3px 8px; cursor:pointer; }
   .item button:hover { background:#e8eef6; }
+  .item .btns { display:flex; gap:6px; flex-wrap:wrap; }
+  .item .more-btn { background:#fff; border-color:var(--navy); }
+  .item .more { margin-top:8px; padding:9px 11px; background:#fbfcfe; border:1px dashed #b9c4d2; border-radius:6px; font-size:12.2px; line-height:1.5; }
+  .item .more .lead { margin:0 0 6px; color:var(--navy); }
+  .item .more ol.steps { margin:4px 0 6px; padding-left:20px; }
+  .item .more ol.steps li { margin-bottom:6px; }
+  .item .more .why { margin:8px 0 0; padding:6px 8px; background:#fbeee8; border-left:3px solid var(--accent); }
+  .item .more code { font-family:Consolas,"Courier New",monospace; font-size:11.5px; background:#eef2f7; padding:0 3px; border-radius:3px; }
+  .more-all { display:block; font-size:11px; color:var(--muted); margin:2px 0 8px; line-height:1.5; }
+  .more-all a { color:var(--navy); cursor:pointer; text-decoration:underline; }
   #detail { position:sticky; top:0; background:#fbeee8; border-left:4px solid var(--accent); padding:8px 10px; margin:0 0 10px; font-size:12px; min-height:52px; z-index:2; max-height:34vh; overflow:auto; }
   #detail b { display:block; margin-bottom:2px; }
   .exp-bar { display:flex; gap:6px; margin:6px 0 10px; }
@@ -69,6 +79,7 @@
     <div id="detail"><b>Detalhe do componente</b><span id="detail-body">Passe o mouse ou clique numa peça da cena.</span></div>
     <div class="exp-bar"><button class="do-expand">🔍 Expandir Bloco 1 (animação)</button><button class="do-collapse">⤡ Recolher</button></div>
     <h2>Guia de estudo</h2>
+    <div class="more-all">Cada card tem uma versão técnica curta e um <b>Saber mais</b> com explicação por analogia. <a id="more-all-open">abrir todos</a> · <a id="more-all-close">fechar todos</a></div>
     <div class="facts">
       <div class="fact"><div class="v">1 passo</div><div class="k">forward único, O(1) em decodificação</div></div>
       <div class="fact"><div class="v">70–500 ms</div><div class="k">latência ponta a ponta</div></div>
